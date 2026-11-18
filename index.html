@@ -1240,6 +1240,8 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
     #wstage { margin-bottom:calc(-20svh - var(--floor)); }
   }
 }
+/* four paragraphs in the studio cell: a row gap between the pairs */
+.pcell > div.four { row-gap:1.05em; }
 /* this copy has no Ask endpoint behind it */
 #ask-bug { display:none !important; }
 </style>
@@ -1280,7 +1282,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   <!-- ============ 01 studio ============ -->
   <section id="studio" class="chap" aria-label="Studio">
     <h2 class="pin">Studio</h2>
-    <div class="pcell rv"><div><p>We can own frontend and backend, branding, and marketing for applications spanning desktop and mobile.</p><p>Working at the intersection of advanced hardware engineering, novel interface design, and high performance design.</p></div></div>
+    <div class="pcell rv"><div class="four"><p>We can own frontend and backend, branding, and marketing for applications spanning desktop and mobile. Working at the intersection of advanced hardware engineering, novel interface design, and high performance design.</p><p>We are not a traditional agency; we operate more like an in-house design lab who brings our wealth of technical expertise and design experience to help select companies at the frontier of human computer interaction in a bespoke way. We can fully step in as a bolt-on in-house team or support as high velocity consultants that ship code.</p><p>We believe the best solutions come from being immersed in all aspects of a problem. The customer, the underlying data, the hardware limits, and ultimately the emotions needed to connect with and communicate to an audience in an increasingly crowded field. We move lightning fast with small teams. Given the right inputs we can deliver fully working products in weeks.</p><p>We work selectively with the teams and projects we think are most likely to win.</p></div></div>
     <div class="frame" id="reel" aria-label="SOOT x UNNAMED reel">
       <!-- NO loading="lazy" (7 Oct, memory plan item 4). The page script
         decides when this frame loads, a screen out, and puts it down again
