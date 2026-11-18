@@ -1449,8 +1449,10 @@ function land(el) {
 }
 const io = new IntersectionObserver(entries => {
   for (const en of entries) {
-    if (en.isIntersecting) land(en.target);
-    else en.target.classList.remove("on");
+    /* SOOT x UNNAMED copy: a reveal lands once and stays. Taking "on" away as
+       text left fought the sweep below, which put it straight back, so text
+       blinked out and in on the way back up the page. */
+    if (en.isIntersecting) { land(en.target); io.unobserve(en.target); }
   }
 }, { threshold:0.12, rootMargin:"0px 0px 140px 0px" });
 /* the margin reaches under the fold, so gathered decks land while they
@@ -3780,7 +3782,10 @@ UN.home = {
     const root = SPILL ? document.body : null;
     const edge = k => Math.max(0, Math.round(k * innerHeight - SPILL_PX)) + "px 0px";
     let at = null, eyes = [], tall = 0, again = 0;
-    const set = v => { if (at !== v) { at = v; on(v); } };
+    /* SOOT x UNNAMED copy: off a phone, a film that has loaded is kept. Letting
+       it go a screen away meant it was fetched again on the way back up the
+       page, and popped in late. */
+    const set = v => { if (!v && !phone) return; if (at !== v) { at = v; on(v); } };
     const arm = () => {
       if (innerHeight === tall) return;
       tall = innerHeight;

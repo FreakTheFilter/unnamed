@@ -1473,7 +1473,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
      rather than generating filenames, which is what makes a missing file
      impossible to hide. -->
 <script src="shared/assets.js"></script>
-<script src="shared/unnamed.js"></script>
+<script src="shared/unnamed.js?v=2"></script>
 <script>
 /* ============================================================
    the acronym is generative. one array to edit, nothing else.
@@ -3401,7 +3401,7 @@ if (wallEl && window.UN_ASSETS) {
   window._wallArc = wallArc;
   if ("IntersectionObserver" in window)
     new IntersectionObserver(es => {
-      for (const e of es) { wallNear = e.isIntersecting; }
+      for (const e of es) { wallNear = e.isIntersecting || (!phone && wallNear); }   /* this copy keeps the wall's films once loaded, off a phone */
       wMounts();
       /* 100%, not 60%: the films have to be mounted before the pre-roll
          starts assembling the wall a screen out, or the build opens on
