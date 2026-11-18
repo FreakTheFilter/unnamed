@@ -1247,6 +1247,8 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
 #ask-bug, #idx-bug { display:none !important; }
 /* the capabilities frame shows each heading alone: no counter, no description */
 #cstep, #csay { display:none !important; }
+/* capabilities is the three text blocks alone: the pinned frame is not shown */
+#cstage { display:none !important; }
 </style>
 </head>
 <body>
@@ -1376,7 +1378,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   <!-- ============ 05 capabilities ============ -->
   <section id="capabilities" class="chap" aria-label="Capabilities">
     <h2 class="pin">Capabilities</h2>
-    <div class="pcell rv"><div><p>Engineering + Design<br>Frontend and backend, desktop and mobile applications, advanced hardware engineering.</p><p>Brand + Marketing</p></div></div>
+    <div class="pcell rv"><div><p>Engineering + Design<br>Frontend and backend, desktop and mobile applications, advanced hardware engineering, novel interface design, high performance design.</p><p>Brand + Marketing<br>Branding and marketing for applications spanning desktop and mobile.</p><p>Research<br>Signal read at a scale no team could cover by hand. We decide what it means.</p></div></div>
     <div id="cstage">
       <div class="frame" id="cframe" aria-label="Human-led AI toolkits">
         <div id="cinfo" aria-hidden="true"></div>
