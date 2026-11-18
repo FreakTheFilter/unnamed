@@ -1378,7 +1378,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   <!-- ============ 05 capabilities ============ -->
   <section id="capabilities" class="chap" aria-label="Capabilities">
     <h2 class="pin">Capabilities</h2>
-    <div class="pcell rv"><div><p>Engineering + Design<br>Frontend and backend, desktop and mobile applications, advanced hardware engineering, novel interface design, high performance design.</p><p>Brand + Marketing<br>Branding and marketing for applications spanning desktop and mobile.</p><p>Research<br>Signal read at a scale no team could cover by hand. We decide what it means.</p></div></div>
+    <div class="pcell rv"><div class="four"><p>Engineering + Design<br>Frontend and backend, desktop and mobile applications, advanced hardware engineering, novel interface design, high performance design.</p><p>Brand + Marketing</p><p>Research<br>Signal read at a scale no team could cover by hand. We decide what it means.</p></div></div>
     <div id="cstage">
       <div class="frame" id="cframe" aria-label="Human-led AI toolkits">
         <div id="cinfo" aria-hidden="true"></div>
@@ -1710,6 +1710,7 @@ function sizeNest() {
     const w = Math.round(innerWidth * s);
     L.el.style.width = w + "px";
     L.el.style.height = Math.round(w * 9 / 16) + "px";
+    L.w = w; L.h = Math.round(w * 9 / 16);
   }
 }
 sizeNest();
@@ -1796,7 +1797,6 @@ function frame(now) {
     requestAnimationFrame(frame);
     return;
   }
-  if (ambient) nestCover(false);
   ambient = false;
 
   const t = now / 1000;
@@ -1845,6 +1845,8 @@ function frame(now) {
   if (p >= 0.999 && !reduced) {
     if (t * 1000 >= restTick) { restTick = t * 1000 + REST_MS; markWhen = t * 1000; beat = true; }
   }
+  let nCovered = false;
+  const nScale = 1 + haze * (NEST_AMB - 1);
   for (const L of nestLayers) {
     /* nothing on screen until the reader moves. the thresholds are close
        together so the stack builds quickly once they do, but at rest the
@@ -1881,6 +1883,18 @@ function frame(now) {
     L.el.style.transform =
       `translate(-50%, calc(-50% + ${lift}px)) ` +
       `scale(${(e * bloom).toFixed(4)}) rotate(${reduced ? 0 : (L.tilt * (1 - e)).toFixed(2)}deg)`;
+    /* SOOT x UNNAMED copy: A FRAME NOBODY CAN SEE IS NOT DRAWN, all the way through
+       the scroll and not only once the field is the wash (nestCover). The frames
+       are opaque, so the first fully-open one that covers the window hides every
+       larger frame behind it. Left visible, those were up to a dozen layers
+       several screens wide, blurred again on every tick of the scroll, which is
+       what made this stretch shake and drop tiles on the way back up. */
+    const nHide = nCovered;
+    if (L.hidden !== nHide) { L.hidden = nHide; L.el.style.visibility = nHide ? "hidden" : ""; }
+    if (!nCovered && L.live && raw >= 1) {
+      const k = bloom * nScale, m = 34 * k + L.sway + 14;
+      nCovered = L.w * k >= innerWidth + 2 * m && L.h * k >= innerHeight + 2 * m;
+    }
   }
 
   /* rather than a white card covering it, the whole field pulls out of
