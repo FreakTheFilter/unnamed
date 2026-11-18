@@ -1243,7 +1243,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
 /* four paragraphs in the studio cell: a row gap between the pairs */
 .pcell > div.four { row-gap:1.05em; }
 /* this copy has no Ask endpoint behind it */
-#ask-bug { display:none !important; }
+#ask-bug, #idx-bug { display:none !important; }
 </style>
 </head>
 <body>
@@ -1251,7 +1251,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
 (function (r) { var s = parseFloat(getComputedStyle(r).getPropertyValue("--spill")); if (s) r.scrollTop = s; })(document.documentElement);</script>
 
 <header>
-  <a id="mark" href="#top" aria-label="SOOT x U.N.N.A.M.E.D.">SOOT x U.N.N.A.M.E.D.</a>
+  <a id="mark" href="#top" aria-label="SOOT x UNNAMED">SOOT x UNNAMED</a>
   <div class="hright">
     <nav id="navword" aria-label="Current section">
       <a href="#studio">&#160;</a>
@@ -1268,7 +1268,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   <div id="stage">
   <section id="gen" aria-label="SOOT x UNNAMED">
     <div>
-      <div class="rv"><div>
+      <div class="rv" hidden><div>
         <div class="words" id="words" title="Regenerate" role="button" tabindex="0" aria-live="polite"></div>
       </div></div>
       <div class="rv" hidden><div class="meaning" id="meaning">&nbsp;</div></div>
