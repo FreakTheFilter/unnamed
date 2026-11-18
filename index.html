@@ -1241,7 +1241,8 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   }
 }
 /* four paragraphs in the studio cell: a row gap between the pairs */
-.pcell > div.four { row-gap:1.05em; }
+.pcell > div.four { grid-template-columns:minmax(0, 30em); justify-content:center; row-gap:1.05em; }
+.pcell > div.four p { max-width:none; }
 /* this copy has no Ask endpoint behind it */
 #ask-bug, #idx-bug { display:none !important; }
 </style>
