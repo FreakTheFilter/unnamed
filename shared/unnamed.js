@@ -1264,7 +1264,7 @@ setInterval(() => {
 const mark = document.getElementById("mark");
 const markWrap = document.createElement("span");
 markWrap.setAttribute("aria-hidden", "true");
-for (const ch of "UNNAMED") {
+for (const ch of "U.N.N.A.M.E.D.") {
   if (ch === ".") { markWrap.appendChild(document.createTextNode(".")); continue; }
   const sp = document.createElement("span");
   sp.textContent = ch;
