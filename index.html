@@ -10,7 +10,7 @@ if (CSS.supports("-webkit-touch-callout", "none") && CSS.supports("height", "100
 <meta name="date" content="2026-08-23">
 <title>SOOT x UNNAMED</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="SOOT x UNNAMED. We take complex data and turn it into sticky consumer applications that people love.">
+<meta name="description" content="SOOT x UNNAMED. We turn complex data into sticky consumer applications that people love.">
 <!-- THE FRONT PAGE HAD NO SHARE TAGS AT ALL (found 16 Aug by the audit's new
      `head` section, the first time anything checked). Every case study carried
      a full set and the studio's own front door carried none, so a link to
@@ -27,13 +27,13 @@ if (CSS.supports("-webkit-touch-callout", "none") && CSS.supports("height", "100
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SOOT x UNNAMED">
 <meta property="og:title" content="SOOT x UNNAMED">
-<meta property="og:description" content="We take complex data and turn it into sticky consumer applications that people love.">
+<meta property="og:description" content="We turn complex data into sticky consumer applications that people love.">
 <meta property="og:image" content="https://studio.unnamed.xyz/share/nike-diamond-16x9-2560-02.jpg">
 <meta property="og:image:width" content="2560">
 <meta property="og:image:height" content="1440">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SOOT x UNNAMED">
-<meta name="twitter:description" content="We take complex data and turn it into sticky consumer applications that people love.">
+<meta name="twitter:description" content="We turn complex data into sticky consumer applications that people love.">
 <meta name="twitter:image" content="https://studio.unnamed.xyz/share/nike-diamond-16x9-2560-02.jpg">
 <!-- THE MARK, not a drawing of it (Manny supplied the file, 10 Aug). This was an
      inline SVG data-URI that set Helvetica Bold "U." in a black square — close, and
@@ -1247,6 +1247,16 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
 #ask-bug, #idx-bug, #bug { display:none !important; }
 /* the capabilities frame shows each heading alone: no counter, no description */
 #cstep, #csay { display:none !important; }
+/* CAPABILITIES READS AS A LABEL AND ITS LIST: the label is quiet, the four items
+   sit under each other as one tight list */
+#capabilities .pin { opacity:.42; }
+#capabilities .pcell > div.four { row-gap:0; }
+/* THE VENTURES TALLY ON A NARROW WINDOW: one figure to a row, figures in their
+   own column, so the labels line up and none sits beside a taller neighbour */
+@media (max-width:600px) {
+  #vtally { grid-template-columns:1fr; gap:4px 0; }
+  #vtally > div { display:grid; grid-template-columns:4.4em 1fr; column-gap:10px; align-items:start; }
+}
 /* capabilities is the three text blocks alone: the pinned frame is not shown */
 #cstage { display:none !important; }
 </style>
@@ -1279,7 +1289,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
       <div class="rv" hidden><div class="meaning" id="meaning">&nbsp;</div></div>
     </div>
     <div class="twocol">
-      <div class="rv"><div>We take complex data and turn it into sticky consumer applications that people love.</div></div>
+      <div class="rv"><div>We turn complex data into sticky consumer applications that people love.</div></div>
     </div>
   </section>
   </div>
@@ -1378,7 +1388,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
   <!-- ============ 05 capabilities ============ -->
   <section id="capabilities" class="chap" aria-label="Capabilities">
     <h2 class="pin">Capabilities</h2>
-    <div class="pcell rv"><div class="four"><p>Engineering + Design</p><p>Brand + Marketing</p><p>Research</p></div></div>
+    <div class="pcell rv"><div class="four"><p>Engineering + Design</p><p>Brand + Marketing</p><p>Research</p><p>Consulting or In-house</p></div></div>
     <div id="cstage">
       <div class="frame" id="cframe" aria-label="Human-led AI toolkits">
         <div id="cinfo" aria-hidden="true"></div>
