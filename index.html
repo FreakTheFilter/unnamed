@@ -1473,7 +1473,7 @@ button { background:none; color:inherit; cursor:pointer; text-align:left; }
      rather than generating filenames, which is what makes a missing file
      impossible to hide. -->
 <script src="shared/assets.js"></script>
-<script src="shared/unnamed.js?v=2"></script>
+<script src="shared/unnamed.js?v=3"></script>
 <script>
 /* ============================================================
    the acronym is generative. one array to edit, nothing else.
@@ -1744,7 +1744,7 @@ function nestCover(on) {
        three of the copy's pixels, and to its master as the hero takes the field
        back. On a slow connection the way back can land after the haze has
        lifted (UN.wash.flip) (7 Oct, memory plan item 1: UN.wash) */
-    if (L.live && !hide) UN.wash.flip(L.el, on && UN.wash.soft(L.el, b));
+    if (L.live && !hide) UN.wash.flip(L.el, lite && on && UN.wash.soft(L.el, b));   /* this copy: full pictures off a phone, so none sharpens late on the way back up */
     if (on && !covered && L.live) {
       const w = L.el.offsetWidth * k, h = L.el.offsetHeight * k;
       const m = 34 * k + L.sway * NEST_AMB + 2;   /* clear of its corner and its drift */
@@ -1878,7 +1878,7 @@ function frame(now) {
        bitmaps, so the marks stay crisp at any size. */
     L.el.style.transform =
       `translate(-50%, calc(-50% + ${lift}px)) ` +
-      `scale(${(e * bloom).toFixed(3)}) rotate(${reduced ? 0 : (L.tilt * (1 - e)).toFixed(2)}deg)`;
+      `scale(${(e * bloom).toFixed(4)}) rotate(${reduced ? 0 : (L.tilt * (1 - e)).toFixed(2)}deg)`;
   }
 
   /* rather than a white card covering it, the whole field pulls out of
@@ -1887,9 +1887,11 @@ function frame(now) {
   /* the instant the field is fully out of focus it belongs behind the
      page, whatever the scroll value happens to be */
   nestEl.style.zIndex = haze > 0.97 ? "-1" : "20";
-  nestEl.style.filter = `blur(${(haze * (lite ? 16 : 58)).toFixed(1)}px)`;
+  /* SOOT x UNNAMED copy: the haze ends on the wash's own blur and scale, so nothing
+     steps as the stack hands over to the wash or takes the field back */
+  nestEl.style.filter = `blur(${(haze * (lite ? 18 : 46)).toFixed(1)}px)`;
   nestEl.style.opacity = (1 - haze * (1 - AMBIENT)).toFixed(3);
-  nestEl.style.transform = `scale(${(1 + haze * 0.14).toFixed(3)})`;
+  nestEl.style.transform = `scale(${(1 + haze * (NEST_AMB - 1)).toFixed(4)})`;
 
   requestAnimationFrame(frame);
 }
@@ -1954,7 +1956,7 @@ function churn() {
   /* behind the page a nest frame is dealt the still's 256px copy where the
      wash's blur hides it, as nestCover judges; a panel, and every frame in the
      hero, its master (7 Oct, memory plan item 1) */
-  const copy = ambient && L.el.parentNode === nestEl &&
+  const copy = lite && ambient && L.el.parentNode === nestEl &&
                UN.wash.soft(L.el, (lite ? 18 : 46) * BLOOM_MAX / 3.9, u);
   /* the swap waits for the file it will paint, copy or master (A FRAME ON
      SCREEN NEVER BLINKS EMPTY), and is dropped if the frame has gone meanwhile */
@@ -2500,10 +2502,7 @@ function verticals(now) {
    adds limbs and speed, so the thing gets more alive as the argument
    gets more specific, then resolves into satellites at the end. */
 const MIND = [
-  ["Research",  "Signal read at a scale no team could cover by hand. We decide what it means."],
-  ["Strategy",  "Positioning pressure-tested against the culture before a word of it ships."],
-  ["Toolkits",  "Generative kits that make the work rather than describe it."],
-  ["Activations", "The system goes live and we stay in it, building alongside the team."]
+  ["Research",  ""]
 ];
 
 const cstage = document.getElementById("cstage");
